@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import socketio
 from fastapi import FastAPI
 from app.schemas import message_schemas
@@ -15,7 +14,7 @@ def test_disconnect(sid):
 
 
 @app.post("/main", response_model=message_schemas.Message)
-async def root(message: message_schemas.Message):
+async def main(message: message_schemas.Message):
     await sio.emit("message", str(message.message))
     return message
 
